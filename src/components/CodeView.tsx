@@ -155,7 +155,7 @@ export function GeneratedForm() {
                   className="flex flex-col space-y-1"
                   disabled={${field.disabled}}
                 >
-                  ${field.options?.map((option, index) => `
+                  ${field.options?.map((option) => `
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
                       <RadioGroupItem value="${option}" />
