@@ -1,15 +1,15 @@
-import React from 'react'
 import { FormControl, FormDescription, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Switch } from '@/components/ui/switch'
 import { Field } from '@/types/formFields'
+import React from 'react'
 import { useController } from 'react-hook-form'
 
 interface SwitchFieldProps {
   field: Field
-  formField: any
+  formField?: any
 }
 
-export const SwitchField: React.FC<SwitchFieldProps> = ({ field, formField }) => {
+export const SwitchField: React.FC<SwitchFieldProps> = ({ field }) => {
   const { field: controlledField } = useController({
     name: field.name,
     defaultValue: false,

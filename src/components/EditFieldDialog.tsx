@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Field, FieldType } from '@/app/types/formFields'
+import { Field, FieldType } from '@/types/formFields'
 import { Textarea } from '@/components/ui/textarea'
 
 interface EditFieldDialogProps {

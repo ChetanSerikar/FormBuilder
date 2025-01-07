@@ -1,4 +1,3 @@
-import { FieldType } from "@/components/FormBuilder"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -6,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function feilds(type: FieldType ) {
+export function feilds(type: any ) {
   switch (type) {
     case 'text':
       return {

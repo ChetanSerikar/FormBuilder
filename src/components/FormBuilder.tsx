@@ -1,20 +1,16 @@
-'use client'
-
-import React, { useState } from 'react'
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
+import { Field, FieldType } from '@/types/formFields'
+import { closestCenter, DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable'
-import FieldOptions from './FieldOptions'
-import FormField from './FormField'
-import ViewSwitcher from './ViewSwitcher'
-import JsonView from './JsonView'
-import PreviewView from './PreviewView'
+import React, { useState } from 'react'
 import CodeView from './CodeView'
 import EditFieldDialog from './EditFieldDialog'
-import { Field, FieldType } from '@/types/formFields'
+import FieldOptions from './FieldOptions'
+import FormField from './FormField'
+import JsonView from './JsonView'
+import PreviewView from './PreviewView'
 import { ScrollArea, ScrollBar } from './ui/scroll-area'
 import { Separator } from './ui/separator'
-import { Github } from 'lucide-react'
-import { ModeToggle } from './mode-toggle'
+import ViewSwitcher from './ViewSwitcher'
 
 const FormBuilder: React.FC = () => {
   const [fields, setFields] = useState<Field[]>([])

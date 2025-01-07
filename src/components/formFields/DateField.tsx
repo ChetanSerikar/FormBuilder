@@ -6,7 +6,7 @@ import { Calendar } from '@/components/ui/calendar'
 import { CalendarIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { format } from 'date-fns'
-import { Field } from '@/app/types/formFields'
+import { Field } from '@/types/formFields'
 import { useController } from 'react-hook-form'
 
 interface DateFieldProps {

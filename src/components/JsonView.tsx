@@ -1,6 +1,5 @@
 import React from 'react'
-import { Field } from './FormBuilder'
-
+import { Field } from '@/types/formFields'
 interface JsonViewProps {
   fields: Field[]
 }

@@ -83,7 +83,7 @@ const PreviewView: React.FC<PreviewViewProps> = ({ fields }) => {
             schema = schema.min(field.validation.min, { message: `Minimum value is ${field.validation.min}` })
           }
           if (field.validation.max !== undefined) {
-            schema = schema.max(field.validation.max, { message: `Maximum value is ${field.validation.max}` })
+            schema = z.number().max(field.validation.max, { message: `Maximum value is ${field.validation.max}` })
           }
         }
       }
@@ -161,13 +161,13 @@ const PreviewView: React.FC<PreviewViewProps> = ({ fields }) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {fields.map((field) => (
+        {fields.map((field : Field) => (
           field && field.name ? (
             <FormField
               key={field.id}
               control={form.control}
               name={field.name}
-              render={() => renderField(field)}
+              render={() => renderField(field) ?? <div>Fallback content</div>}
             />
           ) : null
         ))}

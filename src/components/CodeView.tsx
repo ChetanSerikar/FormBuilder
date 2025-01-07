@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field } from '@/app/types/formFields'
+import { Field } from '@/types/formFields'
 
 interface CodeViewProps {
   fields: Field[]

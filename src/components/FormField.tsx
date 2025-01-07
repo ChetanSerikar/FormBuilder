@@ -4,7 +4,7 @@ import { CSS } from '@dnd-kit/utilities'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Pencil, Trash2 } from 'lucide-react'
-import { Field } from './FormBuilder'
+import { Field } from '@/types/formFields'
 
 interface FormFieldProps {
   field: Field

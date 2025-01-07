@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormControl, FormDescription, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Field } from '@/app/types/formFields'
+import { Field } from '@/types/formFields'
 
 interface EmailFieldProps {
   field: Field

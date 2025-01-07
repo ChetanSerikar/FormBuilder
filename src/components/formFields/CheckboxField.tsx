@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormControl, FormDescription, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Field } from '@/app/types/formFields'
+import { Field } from '@/types/formFields'
 
 interface CheckboxFieldProps {
   field: Field
