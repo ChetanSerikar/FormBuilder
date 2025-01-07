@@ -28,17 +28,18 @@ const FormField: React.FC<FormFieldProps> = ({ field, onEdit, onDelete }) => {
 
   return (
     <Card ref={setNodeRef} style={style} {...attributes} {...listeners} className="mb-4">
-      <CardContent className="flex justify-between items-center p-4">
-        <div  >
-          <h3 className="font-semibold">{field.label}</h3>
-          <p className="text-sm text-gray-500">{field.type}</p>
+      <CardContent className="flex justify-between items-center py-2 px-3">
+        <div className=' flex'>
+          <div className="font-semibold text-sm">{field.label}</div>
+          {/* <p className="text-sm  text-gray-500">{field.type}</p> */}
+          {/* <p className="text-sm font-semibold">{field.type}</p> */}
         </div>
         <div className="flex space-x-2" onPointerDown={(e) => e.stopPropagation()}>
           <Button variant="ghost" size="icon" onClick={() => onEdit(field.id)}>
-            <Pencil className="h-4 w-4" />
+            <Pencil className="h-3 w-3" />
           </Button>
           <Button variant="ghost" size="icon" onClick={() => onDelete(field.id)}>
-            <Trash2 className="h-4 w-4" />
+            <Trash2 className="h-3 w-3" />
           </Button>
         </div>
       </CardContent>

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react'
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable'
@@ -8,23 +10,11 @@ import JsonView from './JsonView'
 import PreviewView from './PreviewView'
 import CodeView from './CodeView'
 import EditFieldDialog from './EditFieldDialog'
+import { Field, FieldType } from '@/types/formFields'
 import { ScrollArea, ScrollBar } from './ui/scroll-area'
 import { Separator } from './ui/separator'
-
-export type FieldType = 'text' | 'number' | 'email' | 'textarea' | 'select' | 'checkbox' | 'radio'
-
-export interface Field {
-  id: string
-  type: FieldType
-  label: string
-  name: string
-  description?: string
-  placeholder?: string
-  className?: string
-  required: boolean
-  disabled: boolean
-  options?: string[]
-}
+import { Github } from 'lucide-react'
+import { ModeToggle } from './mode-toggle'
 
 const FormBuilder: React.FC = () => {
   const [fields, setFields] = useState<Field[]>([])
@@ -41,10 +31,10 @@ const FormBuilder: React.FC = () => {
   const handleDragEnd = (event: any) => {
     const { active, over } = event
 
-    if (active?.id !== over?.id) {
+    if (active.id !== over.id) {
       setFields((items) => {
-        const oldIndex = items.findIndex((item) => item?.id === active?.id)
-        const newIndex = items.findIndex((item) => item?.id === over?.id)
+        const oldIndex = items.findIndex((item) => item.id === active.id)
+        const newIndex = items.findIndex((item) => item.id === over.id)
         return arrayMove(items, oldIndex, newIndex)
       })
     }
@@ -55,10 +45,23 @@ const FormBuilder: React.FC = () => {
       id: `field-${Date.now()}`,
       type,
       label: `New ${type} field`,
-      name: `name_${Date.now()}`,
+      name: `name-${Date.now()}`,
       required: false,
       disabled: false,
     }
+
+    // Add specific properties for certain field types
+    switch (type) {
+      case 'select':
+      case 'radio':
+      case 'combobox':
+        newField.options = ['Option 1', 'Option 2', 'Option 3']
+        break
+      case 'otp':
+        newField.validation = { minLength: 6, maxLength: 6 }
+        break
+    }
+
     setFields([...fields, newField])
   }
 
@@ -71,7 +74,7 @@ const FormBuilder: React.FC = () => {
   }
 
   const openEditDialog = (id: string) => {
-    const fieldToEdit = fields.find(field => field.id == id)
+    const fieldToEdit = fields.find(field => field.id === id)
     if (fieldToEdit) {
       setEditingField(fieldToEdit)
     }
@@ -81,9 +84,16 @@ const FormBuilder: React.FC = () => {
     setEditingField(null)
   }
 
+  // <div className="container mx-auto p-4">
+  // <h1 className="text-2xl font-bold mb-4">Form Builder</h1>
+  // <div className="flex gap-4">
+  //   <div className="w-1/4">
+  //     <FieldOptions addField={addField} />
+  //   </div>
+  //   <div className="w-1/2">
+
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 text-white bg-black px-4 py-2">Form Builder</h1>
+    <div className="container mx-auto p-2 md:p-4">
       <div className="flex gap-4 md:flex-row flex-col">
         <ScrollArea  className="w-full md:w-1/5 whitespace-nowrap rounded-md border py-2 px-3 md:max-h-screen">
           <FieldOptions addField={addField} />
