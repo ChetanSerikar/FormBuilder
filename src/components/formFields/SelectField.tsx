@@ -28,7 +28,7 @@ export const SelectField: React.FC<SelectFieldProps> = ({ field , control }) => 
       </FormControl>
       <SelectContent>
         {field.options?.map((option, index) => (
-          <SelectItem key={index} value={option}>{option}</SelectItem>
+         option == '' ? null : <SelectItem key={index} value={option}>{option}</SelectItem>
         ))}
       </SelectContent>
     </Select>

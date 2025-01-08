@@ -19,6 +19,7 @@ const EditFieldDialog: React.FC<EditFieldDialogProps> = ({ field, isOpen, onClos
 
   React.useEffect(() => {
     setEditedField(field)
+    console.log("editedField", editedField)
   }, [field])
 
   if (!editedField) return null
@@ -32,11 +33,12 @@ const EditFieldDialog: React.FC<EditFieldDialogProps> = ({ field, isOpen, onClos
   }
 
   const handleOptionsChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const options = e.target.value.split('\n').map(option => option.trim()).filter(option => option !== '')
+
+    const options = e.target.value.split('\n'); 
     setEditedField(prev => ({
       ...prev!,
       options
-    }))
+    }));
   }
 
   const handleSave = () => {

@@ -53,7 +53,9 @@ export const ComboboxField: React.FC<ComboboxFieldProps> = ({ field, control }) 
               <CommandEmpty>No option found.</CommandEmpty>
               <CommandGroup>
                 {field.options?.map((option) => (
-                  <CommandItem
+                 option == '' 
+                 ? null 
+                 : <CommandItem
                     value={option}
                     key={option}
                     onSelect={(currentValue) => {

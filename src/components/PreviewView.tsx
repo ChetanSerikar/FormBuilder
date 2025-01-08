@@ -152,7 +152,7 @@ const PreviewView: React.FC<PreviewViewProps> = ({ fields }) => {
       case 'file':
         return <FileField field={field} control={form.control} />
       case 'switch':
-        return <SwitchField field={field} formField={form.register(field.name)} />
+        return <SwitchField field={field} formField={form.register(field.name)} control={form.control} />
       default:
         return null
     }
