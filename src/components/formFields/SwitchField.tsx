@@ -6,12 +6,14 @@ import { useController } from 'react-hook-form'
 
 interface SwitchFieldProps {
   field: Field
-  formField?: any
+  formField?: any,
+  control?: any
 }
 
-export const SwitchField: React.FC<SwitchFieldProps> = ({ field }) => {
+export const SwitchField: React.FC<SwitchFieldProps> = ({ field , control }) => {
   const { field: controlledField } = useController({
     name: field.name,
+    control,
     defaultValue: false,
   })
 
